@@ -15,6 +15,28 @@ func MouseY() int {
 	return js.Global().Get("mouseY").Int()
 }
 
+func MouseButton() string {
+	return js.Global().Get("mouseButton").String()
+}
+
+func MouseIsPressed() bool {
+	return js.Global().Get("mouseIsPressed").Bool()
+}
+
+func MousePressed(pressed func() interface{}) {
+	pressedFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		return pressed()
+	})
+	js.Global().Set("mousePressed", pressedFunc)
+}
+
+func MouseReleased(released func() interface{}) {
+	releasedFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		return released()
+	})
+	js.Global().Set("mouseReleased", releasedFunc)
+}
+
 func MouseClicked(clicked func() interface{}) {
 	clickedFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 		return clicked()

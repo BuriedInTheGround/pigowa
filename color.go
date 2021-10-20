@@ -27,6 +27,10 @@ func BackgroundHex(code string) {
 	js.Global().Call("background", code)
 }
 
+func Clear() {
+	js.Global().Call("clear")
+}
+
 func FillGray(color int, alpha ...int) {
 	if len(alpha) == 0 {
 		js.Global().Call("fill", color)

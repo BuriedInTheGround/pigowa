@@ -15,6 +15,8 @@ func main() {
 		return nil
 	})
 
+	doDraw := true
+
 	ellipseSize := 50
 	colors := []string{
 		"#bf616a",
@@ -34,13 +36,30 @@ func main() {
 		StrokeWeight(3)
 		StrokeHex("#d8dee9")
 		FillHex(colors[colorIndex])
-		Ellipse(MouseX(), MouseY(), ellipseSize, ellipseSize)
+		if doDraw {
+			if MouseIsPressed() && MouseButton() == "center" {
+				StrokeWeight(10)
+				Ellipse(Width/2, Height/2, ellipseSize, ellipseSize)
+			} else {
+				Ellipse(MouseX(), MouseY(), ellipseSize, ellipseSize)
+			}
+		}
 		return nil
 	})
 
 	WindowResized(func() interface{} {
 		ResizeCanvas(WindowWidth(), WindowHeight())
 		return nil
+	})
+
+	MousePressed(func() interface{} {
+		if MouseButton() == "right" {
+			doDraw = !doDraw
+		}
+		if !doDraw {
+			Clear()
+		}
+		return false
 	})
 
 	MouseClicked(func() interface{} {
