@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	done := make(chan struct{}, 0)
+	done := make(chan struct{})
 	fmt.Println("Hello Gopher!")
 
 	Setup(func() interface{} {
