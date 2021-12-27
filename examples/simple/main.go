@@ -15,13 +15,24 @@ func main() {
 		return nil
 	})
 
-	ellipseSize := 50
+	var ellipseSize float64 = 50
 
 	Draw(func() interface{} {
 		BackgroundGray(240)
-		FillRGBA(121, 212, 253)
+
+		NoStroke()
+		FillRGBA(212, 253, 121)
 		Ellipse(200, 200, ellipseSize, ellipseSize)
-		ellipseSize = (ellipseSize + 2) % 380
+
+		FillRGBA(212, 121, 253)
+		Rect(0, 0, ellipseSize, ellipseSize, 20, 50, 200)
+
+		FillRGBA(121, 212, 253)
+		StrokeGray(120)
+		StrokeWeight(5.34)
+		Arc(200, 200, ellipseSize, ellipseSize, 0, 3.9)
+
+		ellipseSize = float64(int(ellipseSize+2) % 380)
 		return nil
 	})
 
