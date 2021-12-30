@@ -30,7 +30,7 @@ func main() {
 		FillRGBA(121, 212, 253)
 		StrokeGray(120)
 		StrokeWeight(5.34)
-		Arc(200, 200, ellipseSize, ellipseSize, 0, 3.9)
+		Arc(200, 200, ellipseSize, ellipseSize, 0, PI+QUARTER_PI, PIE)
 
 		ellipseSize = float64(int(ellipseSize+2) % 380)
 		return nil

@@ -9,6 +9,7 @@ import "syscall/js"
 
 func Setup(setup func() interface{}) {
 	setupFunc := js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		initConstants()
 		return setup()
 	})
 	js.Global().Set("setup", setupFunc)
